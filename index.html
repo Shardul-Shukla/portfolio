@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shardul Shukla | Web Developer in Surat</title>
+<meta name="description" content="Shardul Shukla — elite web developer in Surat, Gujarat. 2+ years building high-converting digital experiences. Every project starts with a paid prototype.">
+<meta name="geo.region" content="IN-GJ">
+<meta name="geo.placename" content="Surat, Gujarat, India">
+<meta property="og:title" content="Shardul Shukla | Web Developer in Surat">
+<meta property="og:description" content="Elite web developer in Surat. 2+ years. High-converting sites. Starts with a paid prototype.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://shardulshukla.in/">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Syne+Mono&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#0A0A0A;
+  --paper:#F2F0EB;
+  --paper2:#E8E5DE;
+  --accent:#C8FF00;
+  --muted:#6B6860;
+  --border:rgba(0,0,0,0.1);
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{
+  background:var(--ink);
+  color:var(--paper);
+  font-family:'Syne',sans-serif;
+  cursor:none;
+  overflow-x:hidden;
+}
+
+/* ── CUSTOM CURSOR ── */
+#cursor{
+  position:fixed;
+  width:12px;height:12px;
+  background:var(--accent);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:9999;
+  transform:translate(-50%,-50%);
+  transition:transform 0.1s,width 0.3s,height 0.3s,background 0.3s;
+  mix-blend-mode:difference;
+}
+#cursor-ring{
+  position:fixed;
+  width:40px;height:40px;
+  border:1px solid rgba(200,255,0,0.4);
+  border-radius:50%;
+  pointer-events:none;
+  z-index:9998;
+  transform:translate(-50%,-50%);
+  transition:transform 0.12s ease-out,width 0.3s,height 0.3s,border-color 0.3s;
+}
+body:hover #cursor{opacity:1}
+
+/* ── LOADER ── */
+#loader{
+  position:fixed;inset:0;
+  background:var(--ink);
+  z-index:1000;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:32px;
+}
+.loader-name{
+  font-family:'Syne',sans-serif;
+  font-size:clamp(1rem,3vw,1.4rem);
+  font-weight:800;
+  letter-spacing:0.35em;
+  text-transform:uppercase;
+  color:var(--paper);
+}
+.loader-bar-wrap{
+  width:260px;
+  height:1px;
+  background:rgba(242,240,235,0.15);
+  position:relative;
+  overflow:hidden;
+}
+.loader-bar{
+  position:absolute;
+  top:0;left:0;
+  height:100%;
+  background:var(--accent);
+  width:0%;
+  transition:width 0.05s linear;
+}
+.loader-pct{
+  font-family:'Syne Mono',monospace;
+  font-size:0.7rem;
+  letter-spacing:0.1em;
+  color:var(--muted);
+}
+.loader-status{
+  font-family:'Syne Mono',monospace;
+  font-size:0.65rem;
+  letter-spacing:0.18em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;width:100%;
+  padding:24px 48px;
+  display:flex;justify-content:space-between;align-items:center;
+  z-index:100;
+  mix-blend-mode:difference;
+}
+.nav-logo{
+  font-weight:800;
+  font-size:0.85rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--paper);
+  text-decoration:none;
+}
+.nav-status{
+  display:flex;align-items:center;gap:8px;
+  font-family:'Syne Mono',monospace;
+  font-size:0.65rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--paper);
+  opacity:0.6;
+}
+.status-dot{
+  width:6px;height:6px;
+  background:var(--accent);
+  border-radius:50%;
+  animation:blink 2s infinite;
+  mix-blend-mode:normal;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.3}}
+
+/* ── HERO ── */
+#hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;
+  justify-content:flex-end;
+  padding:0 48px 64px;
+  position:relative;
+  overflow:hidden;
+}
+
+.hero-eyebrow{
+  font-family:'Syne Mono',monospace;
+  font-size:0.68rem;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:20px;
+  display:flex;align-items:center;gap:14px;
+}
+.hero-eyebrow::before{
+  content:'';
+  display:block;
+  width:32px;height:1px;
+  background:var(--muted);
+}
+
+.hero-h1{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(5rem,13vw,14rem);
+  line-height:0.88;
+  letter-spacing:-0.03em;
+  color:var(--paper);
+  overflow:hidden;
+}
+.hero-h1 .line{
+  display:block;
+  transform:translateY(110%);
+  transition:transform 1s cubic-bezier(0.16,1,0.3,1);
+}
+.hero-h1 .line.italic{font-style:italic;color:rgba(242,240,235,0.45)}
+
+.hero-bottom{
+  display:flex;
+  justify-content:space-between;
+  align-items:flex-end;
+  margin-top:48px;
+  padding-top:32px;
+  border-top:1px solid rgba(242,240,235,0.1);
+  flex-wrap:wrap;
+  gap:24px;
+}
+.hero-desc{
+  max-width:340px;
+  font-size:0.88rem;
+  color:rgba(242,240,235,0.55);
+  line-height:1.75;
+  font-weight:400;
+}
+.hero-cta{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:16px 32px;
+  background:var(--accent);
+  color:var(--ink);
+  text-decoration:none;
+  font-size:0.78rem;
+  font-weight:700;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  border-radius:2px;
+  transition:transform 0.2s,box-shadow 0.2s;
+}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 12px 40px rgba(200,255,0,0.25)}
+.hero-cta svg{width:14px;height:14px;transition:transform 0.2s}
+.hero-cta:hover svg{transform:translate(3px,-3px)}
+
+/* big bg text */
+.hero-bg-text{
+  position:absolute;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(8rem,25vw,28rem);
+  font-style:italic;
+  color:rgba(242,240,235,0.025);
+  white-space:nowrap;
+  pointer-events:none;
+  user-select:none;
+  letter-spacing:-0.04em;
+}
+
+/* ── MARQUEE ── */
+.marquee-wrap{
+  border-top:1px solid rgba(242,240,235,0.1);
+  border-bottom:1px solid rgba(242,240,235,0.1);
+  padding:18px 0;
+  overflow:hidden;
+  background:rgba(242,240,235,0.03);
+}
+.marquee-track{
+  display:flex;
+  gap:0;
+  animation:marquee 20s linear infinite;
+  width:max-content;
+}
+.marquee-item{
+  display:flex;align-items:center;gap:40px;
+  padding:0 40px;
+  font-family:'Syne Mono',monospace;
+  font-size:0.7rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--muted);
+  white-space:nowrap;
+}
+.marquee-sep{color:var(--accent);font-size:1rem}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── SECTION SHARED ── */
+.section{
+  padding:120px 48px;
+  max-width:1400px;
+  margin:0 auto;
+}
+.section-label{
+  font-family:'Syne Mono',monospace;
+  font-size:0.62rem;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--muted);
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:64px;
+}
+.section-label::after{
+  content:'';flex:1;
+  height:1px;
+  background:rgba(242,240,235,0.1);
+}
+
+/* ── ABOUT ── */
+.about-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:80px;
+  align-items:end;
+}
+.about-num{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(5rem,10vw,9rem);
+  line-height:1;
+  color:rgba(242,240,235,0.07);
+  margin-bottom:-16px;
+}
+.about-h2{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(2.2rem,4vw,3.8rem);
+  line-height:1.1;
+  color:var(--paper);
+  margin-bottom:24px;
+}
+.about-h2 em{font-style:italic;color:rgba(242,240,235,0.45)}
+.about-body{
+  font-size:0.9rem;
+  color:rgba(242,240,235,0.55);
+  line-height:1.85;
+  max-width:420px;
+}
+.about-stats{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2px;
+  margin-top:40px;
+}
+.stat-box{
+  padding:28px 24px;
+  background:rgba(242,240,235,0.04);
+  border:1px solid rgba(242,240,235,0.07);
+}
+.stat-box .n{
+  font-family:'Instrument Serif',serif;
+  font-size:2.6rem;
+  color:var(--paper);
+  line-height:1;
+  margin-bottom:6px;
+}
+.stat-box .n span{color:var(--accent)}
+.stat-box .l{
+  font-size:0.72rem;
+  color:var(--muted);
+  letter-spacing:0.06em;
+}
+
+/* ── PROJECTS ── */
+#work{background:var(--paper);color:var(--ink)}
+#work .section-label{color:rgba(10,10,10,0.4)}
+#work .section-label::after{background:rgba(10,10,10,0.1)}
+
+.projects-list{display:flex;flex-direction:column;gap:2px}
+
+.project-row{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:28px 0;
+  border-bottom:1px solid rgba(10,10,10,0.08);
+  text-decoration:none;
+  color:var(--ink);
+  position:relative;
+  overflow:hidden;
+  gap:20px;
+  transition:padding-left 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.project-row::before{
+  content:'';
+  position:absolute;
+  left:0;top:0;
+  width:0;height:100%;
+  background:var(--ink);
+  transition:width 0.4s cubic-bezier(0.4,0,0.2,1);
+  z-index:0;
+}
+.project-row:hover::before{width:100%}
+.project-row:hover{padding-left:24px}
+.project-row:hover .pr-num,
+.project-row:hover .pr-title,
+.project-row:hover .pr-tag,
+.project-row:hover .pr-arrow{color:var(--paper)}
+.project-row:hover .pr-tag{border-color:rgba(242,240,235,0.2);color:rgba(242,240,235,0.6)}
+
+.pr-left{display:flex;align-items:center;gap:28px;position:relative;z-index:1}
+.pr-num{
+  font-family:'Syne Mono',monospace;
+  font-size:0.65rem;
+  color:var(--muted);
+  min-width:28px;
+  transition:color 0.3s;
+}
+.pr-title{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(1.5rem,3.5vw,2.8rem);
+  line-height:1;
+  transition:color 0.3s;
+}
+.pr-tag{
+  font-size:0.68rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  padding:5px 12px;
+  border:1px solid rgba(10,10,10,0.15);
+  border-radius:100px;
+  color:rgba(10,10,10,0.5);
+  transition:color 0.3s,border-color 0.3s;
+  white-space:nowrap;
+  position:relative;z-index:1;
+}
+.pr-right{
+  display:flex;align-items:center;gap:20px;
+  position:relative;z-index:1;
+}
+.pr-arrow{
+  font-size:1.2rem;
+  color:rgba(10,10,10,0.3);
+  transition:color 0.3s,transform 0.3s;
+}
+.project-row:hover .pr-arrow{transform:translate(4px,-4px)}
+
+.project-row-img{
+  width:100px;height:66px;
+  border-radius:4px;
+  object-fit:cover;
+  opacity:0;
+  transform:scale(0.9);
+  transition:opacity 0.3s,transform 0.3s;
+  flex-shrink:0;
+}
+.project-row:hover .project-row-img{opacity:1;transform:scale(1)}
+
+/* ── PROCESS ── */
+.process-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:2px;
+}
+.process-card{
+  padding:48px 36px;
+  background:rgba(242,240,235,0.03);
+  border:1px solid rgba(242,240,235,0.07);
+  position:relative;
+  overflow:hidden;
+  transition:background 0.3s;
+}
+.process-card:hover{background:rgba(242,240,235,0.06)}
+.process-card-num{
+  font-family:'Instrument Serif',serif;
+  font-size:5rem;
+  color:rgba(242,240,235,0.05);
+  line-height:1;
+  position:absolute;
+  top:20px;right:24px;
+}
+.process-card h3{
+  font-family:'Instrument Serif',serif;
+  font-size:1.6rem;
+  color:var(--paper);
+  margin-bottom:16px;
+  position:relative;z-index:1;
+}
+.process-card p{
+  font-size:0.82rem;
+  color:var(--muted);
+  line-height:1.75;
+  position:relative;z-index:1;
+}
+.process-accent{
+  display:inline-block;
+  margin-bottom:16px;
+  width:28px;height:2px;
+  background:var(--accent);
+}
+
+/* ── AGREEMENT ── */
+.agreement-layout{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:2px;
+}
+.ag-card{
+  padding:48px 40px;
+  background:rgba(242,240,235,0.03);
+  border:1px solid rgba(242,240,235,0.07);
+}
+.ag-card h3{
+  font-family:'Syne Mono',monospace;
+  font-size:0.62rem;
+  letter-spacing:0.2em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:32px;
+}
+.ag-item{
+  display:flex;gap:16px;
+  margin-bottom:18px;
+  font-size:0.84rem;
+  color:rgba(242,240,235,0.55);
+  line-height:1.65;
+}
+.ag-item::before{
+  content:'—';
+  color:var(--accent);
+  flex-shrink:0;
+  font-size:0.7rem;
+  margin-top:3px;
+}
+
+/* ── CONTACT ── */
+#contact{
+  background:var(--paper);
+  color:var(--ink);
+  padding:120px 48px;
+  text-align:center;
+}
+.contact-big{
+  font-family:'Instrument Serif',serif;
+  font-size:clamp(3rem,9vw,9rem);
+  line-height:0.9;
+  letter-spacing:-0.03em;
+  color:var(--ink);
+  margin-bottom:48px;
+}
+.contact-big em{font-style:italic;color:rgba(10,10,10,0.3)}
+.contact-links{
+  display:flex;justify-content:center;gap:40px;flex-wrap:wrap;
+}
+.contact-link{
+  font-size:0.8rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:rgba(10,10,10,0.5);
+  text-decoration:none;
+  padding-bottom:4px;
+  border-bottom:1px solid transparent;
+  transition:color 0.2s,border-color 0.2s;
+}
+.contact-link:hover{color:var(--ink);border-color:var(--ink)}
+.contact-cta-row{
+  display:flex;justify-content:center;
+  margin-bottom:56px;
+}
+.contact-cta{
+  display:inline-flex;align-items:center;gap:12px;
+  padding:18px 40px;
+  background:var(--ink);
+  color:var(--paper);
+  text-decoration:none;
+  font-size:0.78rem;
+  font-weight:700;
+  letter-spacing:0.15em;
+  text-transform:uppercase;
+  border-radius:2px;
+  transition:transform 0.2s,opacity 0.2s;
+}
+.contact-cta:hover{transform:translateY(-2px);opacity:0.88}
+
+/* ── FOOTER ── */
+footer{
+  padding:28px 48px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  border-top:1px solid rgba(242,240,235,0.08);
+  flex-wrap:wrap;
+  gap:12px;
+}
+footer p{
+  font-family:'Syne Mono',monospace;
+  font-size:0.62rem;
+  letter-spacing:0.12em;
+  color:var(--muted);
+  text-transform:uppercase;
+}
+
+/* ── WHATSAPP ── */
+.whatsapp{
+  position:fixed;
+  bottom:28px;right:28px;
+  display:inline-flex;align-items:center;gap:10px;
+  padding:12px 22px;
+  background:var(--ink);
+  border:1px solid rgba(242,240,235,0.15);
+  color:var(--paper);
+  border-radius:100px;
+  text-decoration:none;
+  font-size:0.75rem;
+  font-weight:600;
+  letter-spacing:0.08em;
+  z-index:500;
+  transition:transform 0.2s,border-color 0.2s;
+}
+.whatsapp:hover{transform:translateY(-2px);border-color:rgba(37,211,102,0.5)}
+.whatsapp svg{width:16px;height:16px;fill:#25D366}
+
+/* ── SCROLL REVEAL ── */
+.reveal{opacity:0;transform:translateY(36px);transition:opacity 0.85s cubic-bezier(0.16,1,0.3,1),transform 0.85s cubic-bezier(0.16,1,0.3,1)}
+.reveal.on{opacity:1;transform:none}
+.reveal-left{opacity:0;transform:translateX(-32px);transition:opacity 0.85s cubic-bezier(0.16,1,0.3,1),transform 0.85s cubic-bezier(0.16,1,0.3,1)}
+.reveal-left.on{opacity:1;transform:none}
+.d1{transition-delay:0.1s}.d2{transition-delay:0.2s}.d3{transition-delay:0.3s}.d4{transition-delay:0.4s}
+
+/* ── RESPONSIVE ── */
+@media(max-width:768px){
+  nav{padding:20px 24px}
+  #hero{padding:0 24px 48px}
+  .hero-h1{font-size:clamp(3.5rem,14vw,7rem)}
+  .section{padding:80px 24px}
+  .about-grid{grid-template-columns:1fr;gap:40px}
+  .process-grid{grid-template-columns:1fr}
+  .agreement-layout{grid-template-columns:1fr}
+  #contact{padding:80px 24px}
+  .contact-big{font-size:clamp(2.5rem,10vw,5rem)}
+  footer{padding:24px;flex-direction:column;text-align:center}
+  .whatsapp{display:none}
+  .project-row-img{display:none}
+  .pr-tag{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-name">Shardul Shukla</div>
+  <div style="display:flex;flex-direction:column;align-items:center;gap:12px">
+    <div class="loader-bar-wrap"><div class="loader-bar" id="lbar"></div></div>
+    <div class="loader-pct" id="lpct">0%</div>
+  </div>
+  <div class="loader-status" id="lstatus">Initialising portfolio</div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">SS</a>
+  <div class="nav-status">
+    <span class="status-dot"></span>
+    Available for projects
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg-text">Developer</div>
+  <div class="hero-eyebrow">Web Developer · Surat, India · Est. 2024</div>
+  <h1 class="hero-h1">
+    <span class="line">Shardul</span>
+    <span class="line italic">Shukla</span>
+  </h1>
+  <div class="hero-bottom">
+    <p class="hero-desc">I craft elite, high-converting digital experiences for businesses. 2+ years of precision design & development — starting with a paid prototype, no guesswork.</p>
+    <a href="https://api.whatsapp.com/send?phone=919313863102&text=Hello%20Shardul%20I%20want%20to%20create%20a%20website%20for%20my%20personal%20use%20%2F%20business" target="_blank" class="hero-cta">
+      Start a Project
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <div class="marquee-item">Web Design <span class="marquee-sep">●</span></div>
+    <div class="marquee-item">UI / UX <span class="marquee-sep">●</span></div>
+    <div class="marquee-item">Development <span class="marquee-sep">●</span></div>
+    <div class="marquee-item">Prototype First <span class="marquee-sep">●</span></div>
+    <div class="marquee-item">Surat, Gujarat <span class="marquee-sep">●</span></div>
+    <div class="marquee-item">2+ Years <span class="marquee-sep">●</span></div>
+    <div class="marquee-item">Web Design <span class="marquee-sep">●</span></div>
+    <div class="marquee-item">UI / UX <span class="marquee-sep">●</span></div>
+    <div class="marquee-item">Development <span class="marquee-sep">●</span></div>
+    <div class="marquee-item">Prototype First <span class="marquee-sep">●</span></div>
+    <div class="marquee-item">Surat, Gujarat <span class="marquee-sep">●</span></div>
+    <div class="marquee-item">2+ Years <span class="marquee-sep">●</span></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="section-label">About</div>
+  <div class="about-grid">
+    <div>
+      <div class="about-num reveal">02</div>
+      <h2 class="about-h2 reveal d1">Turning ideas into<br><em>digital reality</em></h2>
+      <p class="about-body reveal d2">I'm a web developer based in Surat with 2+ years of experience building high-converting websites and web applications for businesses across India. I believe every serious project deserves a paid prototype — you see exactly what you're getting before committing to the full build.</p>
+    </div>
+    <div>
+      <div class="about-stats reveal d1">
+        <div class="stat-box">
+          <div class="n">2<span>+</span></div>
+          <div class="l">Years experience</div>
+        </div>
+        <div class="stat-box">
+          <div class="n">4<span>+</span></div>
+          <div class="l">Projects delivered</div>
+        </div>
+        <div class="stat-box">
+          <div class="n">100<span>%</span></div>
+          <div class="l">Client satisfaction</div>
+        </div>
+        <div class="stat-box">
+          <div class="n">₹5k</div>
+          <div class="l">Prototype starts at</div>
+        </div>
+        <div class="stat-box">
+          <div class="n">🏆</div>
+          <div class="l">1st Place — Inter-school Web Dev (24 Schools)</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK -->
+<section id="work" style="padding:120px 48px;">
+  <div style="max-width:1400px;margin:0 auto;">
+    <div class="section-label">Selected Work</div>
+    <div class="projects-list">
+
+      <a href="http://shardul-shukla.github.io/Demo-ElectroX/" target="_blank" class="project-row reveal">
+        <div class="pr-left">
+          <span class="pr-num">01</span>
+          <span class="pr-title">ElectroX</span>
+          <span class="pr-tag">Web Design</span>
+        </div>
+        <div class="pr-right">
+          <img src="https://cdn.phototourl.com/free/2026-04-19-e7537953-fe8a-4a8f-9f44-212d770ae31d.png" alt="Project One" class="project-row-img">
+          <span class="pr-arrow">↗</span>
+        </div>
+      </a>
+
+      <a href="https://shardul-shukla.github.io/Demo-Site/" target="_blank" class="project-row reveal d1">
+        <div class="pr-left">
+          <span class="pr-num">02</span>
+          <span class="pr-title">Pratima Poshak</span>
+          <span class="pr-tag">UI / UX</span>
+        </div>
+        <div class="pr-right">
+          <img src="https://cdn.phototourl.com/member/2026-04-19-0587a0cc-5367-4522-bf15-60ef1e8da153.png" alt="Project Two" class="project-row-img">
+          <span class="pr-arrow">↗</span>
+        </div>
+      </a>
+
+      <a href="#contact" class="project-row reveal d2">
+        <div class="pr-left">
+          <span class="pr-num">03</span>
+          <span class="pr-title">Your Project Here</span>
+          <span class="pr-tag">Let's Build It</span>
+        </div>
+        <div class="pr-right">
+          <span class="pr-arrow">↗</span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="section" id="process">
+  <div class="section-label">Process</div>
+  <div class="process-grid">
+    <div class="process-card reveal">
+      <div class="process-card-num">01</div>
+      <div class="process-accent"></div>
+      <h3>Design &<br>Prototype</h3>
+      <p>A full UI/UX prototype built before any production code. You see exactly what you're getting. ₹5,000–₹7,000, non-refundable.</p>
+    </div>
+    <div class="process-card reveal d1">
+      <div class="process-card-num">02</div>
+      <div class="process-accent"></div>
+      <h3>One Round<br>of Revisions</h3>
+      <p>One focused feedback session included. We refine until it's exactly right — then lock in the scope with full transparency.</p>
+    </div>
+    <div class="process-card reveal d2">
+      <div class="process-card-num">03</div>
+      <div class="process-accent"></div>
+      <h3>Final<br>Development</h3>
+      <p>Full production build after prototype approval. Priced on agreed scope. No surprises, no hidden costs, no scope creep.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TERMS -->
+<section class="section" id="terms">
+  <div class="section-label">Terms & Agreement</div>
+  <div class="agreement-layout">
+    <div class="ag-card reveal">
+      <h3>Prototype Fee</h3>
+      <div class="ag-item">Design & Prototype Fee: ₹5,000–₹7,000 (non-refundable)</div>
+      <div class="ag-item">Includes complete UI/UX design and a working interactive demo</div>
+      <div class="ag-item">One revision round included at no extra charge</div>
+      <div class="ag-item">Final development price quoted after prototype approval</div>
+    </div>
+    <div class="ag-card reveal d1">
+      <h3>Ownership & Rights</h3>
+      <div class="ag-item">Full ownership transfers to client only upon complete final payment</div>
+      <div class="ag-item">Prototype may be delivered in a private or watermarked format</div>
+      <div class="ag-item">Developer retains the right to showcase work in their portfolio</div>
+      <div class="ag-item">All communications may be retained for records</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-big reveal">
+    Let's build<br><em>something</em><br>great
+  </div>
+  <div class="contact-cta-row reveal d1">
+    <a href="https://api.whatsapp.com/send?phone=919313863102&text=Hello%20Shardul%20I%20want%20to%20create%20a%20website%20for%20my%20personal%20use%20%2F%20business" target="_blank" class="contact-cta">
+      Start on WhatsApp ↗
+    </a>
+  </div>
+  <div class="contact-links reveal d2">
+    <a href="tel:+919313863102" class="contact-link">+91 93138 63102</a>
+    <a href="mailto:sisgj0149@gmail.com" class="contact-link">sisgj0149@gmail.com</a>
+    <a href="https://api.whatsapp.com/send?phone=919313863102" target="_blank" class="contact-link">WhatsApp</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Shardul Shukla</p>
+  <p>Web Developer · Surat, Gujarat, India</p>
+</footer>
+
+<!-- WHATSAPP FLOAT -->
+<a class="whatsapp" href="https://api.whatsapp.com/send?phone=919313863102&text=Hello%20Shardul%20I%20want%20to%20create%20a%20website%20for%20my%20personal%20use%20%2F%20business" target="_blank">
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+  Chat on WhatsApp
+</a>
+
+<script>
+// ── CURSOR ──
+const cur = document.getElementById('cursor');
+const ring = document.getElementById('cursor-ring');
+let mx=0,my=0,rx=0,ry=0;
+window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+function animRing(){
+  rx+=(mx-rx)*0.12; ry+=(my-ry)*0.12;
+  ring.style.left=rx+'px'; ring.style.top=ry+'px';
+  requestAnimationFrame(animRing);
+}
+animRing();
+document.querySelectorAll('a,button').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='20px';cur.style.height='20px';ring.style.width='60px';ring.style.height='60px';ring.style.borderColor='rgba(200,255,0,0.6)';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='12px';cur.style.height='12px';ring.style.width='40px';ring.style.height='40px';ring.style.borderColor='rgba(200,255,0,0.4)';});
+});
+
+// ── LOADER ──
+const bar=document.getElementById('lbar');
+const pct=document.getElementById('lpct');
+const status=document.getElementById('lstatus');
+const statuses=['Initialising portfolio','Loading assets','Preparing canvas','Almost ready'];
+let p=0;
+const iv=setInterval(()=>{
+  p+=Math.random()*3+1;
+  if(p>100)p=100;
+  bar.style.width=p+'%';
+  pct.textContent=Math.floor(p)+'%';
+  if(p>25)status.textContent=statuses[1];
+  if(p>55)status.textContent=statuses[2];
+  if(p>85)status.textContent=statuses[3];
+  if(p>=100){
+    clearInterval(iv);
+    setTimeout(()=>{
+      const loader=document.getElementById('loader');
+      loader.style.transition='opacity 0.7s ease';
+      loader.style.opacity='0';
+      setTimeout(()=>{
+        loader.style.display='none';
+        // trigger hero text
+        document.querySelectorAll('.hero-h1 .line').forEach((l,i)=>{
+          setTimeout(()=>{l.style.transform='translateY(0)'},i*140+80);
+        });
+      },700);
+    },400);
+  }
+},40);
+
+// ── SCROLL REVEAL ──
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target);}});
+},{threshold:0.1});
+document.querySelectorAll('.reveal,.reveal-left').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
